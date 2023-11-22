@@ -8,7 +8,7 @@ contract SimpleVal {
 
     uint256 myVal = 123;
 
-    function getVal() public view returns (uint256)  {
+    function getVal() public view returns (???)  {
         return myVal;
     }
 }
