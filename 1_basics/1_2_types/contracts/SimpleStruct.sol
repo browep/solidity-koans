@@ -11,11 +11,11 @@ contract SimpleStruct {
 
     function getPersonAge() public view returns (uint)  {
         // get the age of the person struct
-        return myPerson.age;
+        return ???;
     }
 
     function getPersonHeight() public view returns (uint) {
         // get the height of the person struct
-        return myPerson.height;
+        return ???;
     }
 }

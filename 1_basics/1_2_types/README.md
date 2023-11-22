@@ -1,10 +1,13 @@
-# 1.2 Types
+# 1.2 Types/Structs
+
+Structs are composite types that are used solidity.
 
 ## Todo
 
-update the `contracts/SimpleVal.sol` contract file.  Look for the `???` to fix the return type of the function.
+Update the `contracts/SimpleStruct.sol` contract file.  Look for the `???`s to fix the compile errors and return the 
+correct value the test is expecting.
 
-Hint: it should match the type of the var that is being returned.
+
 
 ## Running
-Run the `run.sh` command to make sure you see a success message.  
+Run the `run.sh` command and make sure you see a success message.  
