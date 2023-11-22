@@ -1,11 +1,10 @@
-# 1.3 Fixed Length Byte Arrays
+# 1.4 Dynamic Byte Arrays
 
 ## Todo
 
-update the `contracts/ByteArraysContract.sol` contract file.  Look for the `???`.
-
-* Fixed length byte arrays can use shift operators.  Update `getShiftedBytes` function to shift the byte array the correct number of bytes so that return matches what is expected in the test.
-* In `getArrayAtIndex` update the array index to access the correct value. 
+in `contracts/DynamicByteArrayContract.sol`
+* update `concatArrays` function to concatenate the two byte arrays together
+* update `getArrayOfArrays` function to put both byte arrays into a 2-dimensional array of arrays.
 
 ## Running
 Run the `run.sh` command to make sure you see a success message.  

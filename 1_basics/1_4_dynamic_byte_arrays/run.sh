@@ -1,5 +1,5 @@
 #!/bin/bash
-DOCKER_BUILD_NAME=1_3_byte_arrays
+DOCKER_BUILD_NAME=1_4_dynamic_byte_arrays
 docker kill $DOCKER_BUILD_NAME
 docker rm $DOCKER_BUILD_NAME
 set -e
