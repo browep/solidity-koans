@@ -13,10 +13,10 @@ contract ByteArraysContract {
     }
 
     function getShiftedBytes() public view returns (bytes8)  {
-        return myBytes8 << 8;
+        return myBytes8 << ???;
     }
 
     function getArrayAtIndex() public view returns (bytes1) {
-        return myBytes8[2];
+        return myBytes8[???];
     }
 }
