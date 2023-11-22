@@ -1,5 +1,5 @@
 #!/bin/bash
-DOCKER_BUILD_NAME=1_1_types
+DOCKER_BUILD_NAME=1_2_types
 docker kill $DOCKER_BUILD_NAME
 docker rm $DOCKER_BUILD_NAME
 set -e

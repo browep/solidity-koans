@@ -1,4 +1,4 @@
-# 1.1 Types
+# 1.2 Types
 
 ## Todo
 

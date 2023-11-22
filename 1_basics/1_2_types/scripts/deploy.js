@@ -7,22 +7,29 @@
 const hre = require("hardhat");
 
 async function main() {
-  const myValContractDeploy = await hre.ethers.deployContract("SimpleVal");
+  const myStructContractDeploy = await hre.ethers.deployContract("SimpleStruct");
 
-  await myValContractDeploy.waitForDeployment();
-  const SimpleVal = await hre.ethers.getContractFactory("SimpleVal");
+  await myStructContractDeploy.waitForDeployment();
+  const SimpleStruct = await hre.ethers.getContractFactory("SimpleStruct");
 
+  console.log(`SimpleStruct contract deployed to ${myStructContractDeploy.target}`);
+  const simpleStructInstance = SimpleStruct.attach(myStructContractDeploy.target)
+  const personAge = await simpleStructInstance.getPersonAge()
+  console.log(`ret val=${personAge.toString()}`)
+  if (personAge != 40) {
+    console.log(`FAILURE: was expecting 40 for person age, got ${personAge}`)
+    process.exit(1);
+  }
 
-  console.log(
-    `MyVal contract deployed to ${myValContractDeploy.target}`
-  );
-  const simpleValInstance = SimpleVal.attach(myValContractDeploy.target)
-  const retVal = await simpleValInstance.getVal()
-  console.log(`ret val=${retVal}`)
-  if (retVal == 123) {
-    console.log('SUCCESS')
-  } else console.log(`FAILURE, was expecting 123, got ${retVal}`)
+  const personHeight = await simpleStructInstance.getPersonHeight()
+  console.log(`ret val=${personHeight}`)
 
+  if (personHeight != 100) {
+    console.log(`FAILURE: was expecting 100 for person height, got ${personHeight}`)
+    process.exit(1);
+  }
+
+  console.log('SUCCESS')
 }
 
 // We recommend this pattern to be able to use async/await everywhere
