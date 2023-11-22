@@ -2,9 +2,10 @@
 
 ## Todo
 
-update the `contracts/SimpleVal.sol` contract file.  Look for the `???` to fix the return type of the function.
+update the `contracts/ByteArraysContract.sol` contract file.  Look for the `???`.
 
-Hint: it should match the type of the var that is being returned.
+* Fixed length byte arrays can use shift operators.  Update `getShiftedBytes` function to shift the byte array the correct number of bytes so that return matches what is expected in the test.
+* In Access the correct byte array index to 
 
 ## Running
 Run the `run.sh` command to make sure you see a success message.  

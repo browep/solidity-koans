@@ -7,21 +7,32 @@
 const hre = require("hardhat");
 
 async function main() {
-  const myValContractDeploy = await hre.ethers.deployContract("SimpleVal");
+  let contractName = "ByteArraysContract";
 
-  await myValContractDeploy.waitForDeployment();
-  const SimpleVal = await hre.ethers.getContractFactory("SimpleVal");
+  const contractDeploy = await hre.ethers.deployContract(contractName);
 
+  await contractDeploy.waitForDeployment();
+  const contractClass = await hre.ethers.getContractFactory(contractName);
 
   console.log(
-    `MyVal contract deployed to ${myValContractDeploy.target}`
+    `${contractName} contract deployed to ${contractDeploy.target}`
   );
-  const simpleValInstance = SimpleVal.attach(myValContractDeploy.target)
-  const retVal = await simpleValInstance.getVal()
+  const contractInstance = contractClass.attach(contractDeploy.target)
+
+  let retVal = await contractInstance.getShiftedBytes()
   console.log(`ret val=${retVal}`)
-  if (retVal == 123) {
-    console.log('SUCCESS')
-  } else console.log(`FAILURE, was expecting 123, got ${retVal}`)
+  let expected = '0x0203040506070800';
+  if (retVal != expected) {
+    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
+  }
+
+  retVal = await contractInstance.getArrayAtIndex()
+  expected = '0x03';
+  if (retVal != expected) {
+    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
+  }
+
+  console.log('SUCCESS')
 
 }
 
