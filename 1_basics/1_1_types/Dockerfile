@@ -1,6 +1,9 @@
 FROM node:20.9.0-alpine3.18
 WORKDIR /etc/koans
 COPY package.json .
-RUN yarn install
+COPY package-lock.json .
+RUN npm ci
+COPY . .
+COPY $PWD/entrypoint.sh /usr/local/bin
 
-CMD yarn start
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/entrypoint.sh"]
