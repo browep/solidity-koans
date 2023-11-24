@@ -1,4 +1,4 @@
-# X.X REPLACE_ME
+# 1.5 Array Splicing 
 
 ## Todo
 
