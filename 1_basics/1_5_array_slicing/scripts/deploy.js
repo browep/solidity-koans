@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  let contractName = "DynamicByteArrayContract";
+  let contractName = "Contract";
 
   const contractDeploy = await hre.ethers.deployContract(contractName);
 
@@ -19,16 +19,10 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.concatArrays()
+  let retVal = await contractInstance.func1(Buffer.from(["a","b","c","d","e","f","g","h"].map(c => c.charCodeAt())));
   console.log(`ret val=${retVal}`)
-  let expected = '0x0102030405060708';
-  if (retVal != expected) {
-    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
-  }
-
-  retVal = await contractInstance.getArrayOfArrays()
-  expected = '0x01020304,0x05060708';
-  if (retVal != expected) {
+  let expected = true;
+  if (!retVal) {
     throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
   }
 

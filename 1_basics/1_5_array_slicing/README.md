@@ -1,4 +1,4 @@
-# 1.5 Array Splicing 
+# 1.5 Array Slicing 
 
 ## Todo
 
