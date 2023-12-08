@@ -12,7 +12,8 @@ contract Contract {
 
     function func1(bytes calldata chars) public pure returns (bool) {
 
-        bytes memory actual = chars[0:4];
+        bytes memory actual = chars[:4]; // <- fix this line to grab the correct slice of the array
+                                         // hint: you only need to specify the "end" of the slice
 
         bytes memory expected = abi.encodePacked("a","b","c","d");
         bytes memory actualPacked = abi.encodePacked(actual);
