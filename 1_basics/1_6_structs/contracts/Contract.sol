@@ -23,8 +23,8 @@ contract Contract {
     }
 
     function getPerson() public view returns (uint, string memory) {
-        // create person here
-        Person memory person = Person({id: 1, name: "Alice"});
+        // create person here, that will adhere to the values in the deploy.js file
+        ???
         return (person.id, person.name);
     }
 

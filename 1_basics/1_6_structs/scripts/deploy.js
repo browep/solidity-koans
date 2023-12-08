@@ -22,7 +22,7 @@ async function main() {
     let retVal
     retVal = await contractInstance.getDefaultName()
     console.log(`ret val=${retVal}`)
-    let expected = '';
+    let expected = '???TODO???';
     if (retVal != expected) {
         throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
     }
