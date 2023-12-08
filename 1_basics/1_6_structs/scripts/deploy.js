@@ -28,9 +28,9 @@ async function main() {
     }
 
     retVal = await contractInstance.getPerson()
-    console.log(`ret val=${retVal}`)
-    expected = [1, 'Alice'];
-    if (retVal != expected) {
+    console.log(`ret val=${typeof retVal[0]}`)
+    expected = [BigInt(1), 'Alice'];
+    if (retVal[0].toString() != expected[0].toString() || retVal[1].toString() != expected[1].toString()) {
         throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
     }
 
