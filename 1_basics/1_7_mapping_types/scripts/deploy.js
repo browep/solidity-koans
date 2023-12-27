@@ -19,9 +19,9 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let signers = hre.ethers.getSigners();
+  let signers = await hre.ethers.getSigners();
   console.log(`signers: ${JSON.stringify(signers)}`)
-  let updateRet = await contractInstance.update(signers[0].address, )
+  let updateRet = await contractInstance.update(signers[0].address, 66)
   console.log(`updateRet: ${JSON.stringify(updateRet)}`)
 
   let retVal = await contractInstance.contractMethodReplace_Me()
