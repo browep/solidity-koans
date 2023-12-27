@@ -10,13 +10,14 @@ contract Contract {
 
     }
 
-    // take in an int and return and address
-    function intToAddress(uint160 intAddress) public pure returns (address) {
+    // take in an int and return and address, change the type to the expected type that
+    // can be cast to an address type
+    function intToAddress(??? intAddress) public pure returns (address) {
         return address(intAddress);
     }
 
     // take in a specific byte array and return an address
-    function bytesToAddress(bytes20 bytesAddress) public pure returns (address) {
+    function bytesToAddress(??? bytesAddress) public pure returns (address) {
         return address(bytesAddress);
     }
 
