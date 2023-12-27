@@ -10,8 +10,14 @@ contract Contract {
 
     }
 
-    function contractMethodReplace_Me() public view returns (string memory) {
-        return "OK";
+    // take in an int and return and address
+    function intToAddress(uint160 intAddress) public pure returns (address) {
+        return address(intAddress);
+    }
+
+    // take in a specific byte array and return an address
+    function bytesToAddress(bytes20 bytesAddress) public pure returns (address) {
+        return address(bytesAddress);
     }
 
 }

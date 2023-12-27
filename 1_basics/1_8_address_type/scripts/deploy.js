@@ -19,14 +19,20 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
+  let expectedAddress = '0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97';
+
+  let retVal = (await contractInstance.intToAddress(BigInt('412311598482915581890913355723629879470649597847'))).toLowerCase()
   console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
+  let expected = expectedAddress;
   if (retVal != expected) {
     throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
   }
-  console.log('SUCCESS')
 
+  retVal = (await contractInstance.bytesToAddress(expectedAddress)).toLowerCase()
+  console.log('SUCCESS')
+  if (retVal != expected) {
+    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
+  }
 }
 
 // We recommend this pattern to be able to use async/await everywhere
