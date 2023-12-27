@@ -6,12 +6,14 @@ pragma solidity ^0.8.9;
 
 contract Contract {
 
-    constructor() {
+    mapping(address => uint) public grades;
 
+    function update(address student, uint newGrade) public {
+        grades[student] = newGrade;
     }
 
-    function contractMethodReplace_Me() public view returns (string memory) {
-        return "OK";
+    // this function should return true if the grade of the tx sender is less than 65
+    function amIFailing() public view returns (bool) {
+       return grades[tx.origin] < 65;
     }
-
 }
