@@ -20,13 +20,12 @@ async function main() {
   const contractInstance = contractClass.attach(contractDeploy.target)
 
   let signers = await hre.ethers.getSigners();
-  console.log(`signers: ${JSON.stringify(signers)}`)
   let updateRet = await contractInstance.update(signers[0].address, 66)
-  console.log(`updateRet: ${JSON.stringify(updateRet)}`)
+  console.log(`updated the score to "66" with tx hash ${updateRet.hash}`)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
+  let retVal = await contractInstance.amIFailing()
   console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
+  let expected = false;
   if (retVal != expected) {
     throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
   }

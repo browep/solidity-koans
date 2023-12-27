@@ -14,6 +14,6 @@ contract Contract {
 
     // this function should return true if the grade of the tx sender is less than 65
     function amIFailing() public view returns (bool) {
-       return grades[tx.origin] < 65;
+       return ???;
     }
 }
