@@ -19,9 +19,18 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
-  console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
+  // send funds to contract
+  let signers = await hre.ethers.getSigners();
+  let account1 = signers[0];
+
+  let txParams = {to: contractDeploy.target, value: "0x02"};
+  console.log(JSON.stringify(txParams))
+  const fundTx = await account1.sendTransaction(txParams)
+  console.log(`sent: ${JSON.stringify(fundTx)}`)
+
+  let withdrawTxReceipt = await contractInstance.withdraw()
+  const retVal = await hre.ethers.provider.getBalance(contractDeploy.target)
+  let expected = 0;
   if (retVal != expected) {
     throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
   }

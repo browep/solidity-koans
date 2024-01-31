@@ -10,8 +10,16 @@ contract Contract {
 
     }
 
-    function contractMethodReplace_Me() public view returns (string memory) {
-        return "OK";
+    function withdraw() public returns (bool) {
+        address sendAddress = tx.origin;
+        uint256 contractBalance = address(this).balance;
+
+        return payable(sendAddress).send(contractBalance);
     }
+
+    receive() external payable {
+
+    }
+
 
 }
