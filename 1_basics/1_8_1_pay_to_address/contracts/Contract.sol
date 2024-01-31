@@ -14,7 +14,7 @@ contract Contract {
         address sendAddress = tx.origin;
         uint256 contractBalance = address(this).balance;
 
-        return payable(sendAddress).send(contractBalance);
+        return true;
     }
 
     receive() external payable {
