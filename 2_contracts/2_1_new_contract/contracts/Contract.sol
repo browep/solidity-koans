@@ -19,7 +19,7 @@ contract A {
     }
 
     function createB(uint a) public {
-        b = new B(a);
+        ??? // fixme: create a new instance of "B" initialized with "a"
     }
 
 }
