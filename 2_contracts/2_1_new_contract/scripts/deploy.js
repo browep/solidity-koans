@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  let contractName = "Contract";
+  let contractName = "A";
 
   const contractDeploy = await hre.ethers.deployContract(contractName);
 
@@ -19,9 +19,15 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
-  console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
+  let createRet = await contractInstance.createB(2)
+  console.log(`ret val=${JSON.stringify(createRet)}`)
+  let bAddress = await contractInstance.b();
+  console.log(`bAddress: ${JSON.stringify(bAddress)}`)
+  const bContractClass = await hre.ethers.getContractFactory("B");
+  const bContractInstance = bContractClass.attach(bAddress);
+  const retVal = await bContractInstance.x();
+
+  let expected = 2;
   if (retVal != expected) {
     throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
   }

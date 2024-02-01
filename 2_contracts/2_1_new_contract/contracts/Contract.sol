@@ -4,14 +4,22 @@ pragma solidity ^0.8.9;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract Contract {
+contract B {
+    uint public x;
+    constructor(uint a) payable {
+        x = a;
+    }
+}
 
+contract A {
+
+    B public b = new B(1);
     constructor() {
 
     }
 
-    function contractMethodReplace_Me() public view returns (string memory) {
-        return "OK";
+    function createB(uint a) public {
+        b = new B(a);
     }
 
 }
