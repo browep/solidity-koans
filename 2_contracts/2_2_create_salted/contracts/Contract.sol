@@ -30,7 +30,7 @@ contract C {
 
         console.log(string("predicted address"));
         console.log(predictedAddress);
-        D d = new D{salt: salt}(arg);
+        D d = new D(arg); // <- fix here
         console.log(string("actual address"));
         console.log(address(d));
 
