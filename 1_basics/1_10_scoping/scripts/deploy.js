@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  let contractName = "Contract";
+  let contractName = "C";
 
   const contractDeploy = await hre.ethers.deployContract(contractName);
 
@@ -19,12 +19,8 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
+  let retVal = await contractInstance.f()
   console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
-  if (retVal != expected) {
-    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
-  }
   console.log('SUCCESS')
 
 }

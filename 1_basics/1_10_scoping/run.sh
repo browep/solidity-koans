@@ -1,5 +1,5 @@
 #!/bin/bash
-DOCKER_BUILD_NAME=REPLACE_ME
+DOCKER_BUILD_NAME=1_10_scoping
 docker kill $DOCKER_BUILD_NAME
 docker rm $DOCKER_BUILD_NAME
 set -e
