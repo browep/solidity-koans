@@ -6,12 +6,8 @@ pragma solidity ^0.8.9;
 
 contract Contract {
 
-    constructor() {
-
-    }
-
-    function contractMethodReplace_Me() public view returns (string memory) {
-        return "OK";
+    function f(uint x) public pure {
+        require(x % 2 == 0, "x must be even");
     }
 
 }
