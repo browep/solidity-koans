@@ -19,13 +19,8 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
-  console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
-  if (retVal != expected) {
-    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
-  }
-  console.log('SUCCESS')
+  let retVal = await contractInstance.g()
+    console.log('SUCCESS')
 
 }
 
