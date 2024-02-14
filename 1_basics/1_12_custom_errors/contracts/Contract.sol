@@ -12,7 +12,8 @@ error NotEven(
 contract Contract {
 
     function f(uint x) public pure {
-        if (x % 2 != 0) revert NotEven(x, x % 2);
+        // TODO: throw an error here of type "NotEven" if the input x is not even,
+        // fill in the params of the error class with what is expected in deploy.js.
     }
 
 }
