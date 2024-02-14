@@ -5,6 +5,7 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat");
+const {ethers, toBigInt} = require("ethers")
 
 async function main() {
   let contractName = "Contract";
@@ -19,13 +20,30 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
-  console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
-  if (retVal != expected) {
-    throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
+  try {
+    let retVal = await contractInstance.f(3)
+    console.log('FAILURE, method should have reverted with an exception')
+  } catch (e) {
+    console.log(typeof e)
+    console.log(e.message)
+    console.log(JSON.stringify(e, null, " "))
+    const errorData = e.data.data;
+    const abi = [
+      'function NotEven(uint256 input, uint256 diff)',
+    ]
+    const errorInterface = new ethers.Interface(abi)
+    const decoded = errorInterface.decodeFunctionData(
+        'NotEven(uint256,uint256)',
+        errorData
+    )
+
+    console.log(`Returned NotEven error: input=${decoded.input}, diff=${decoded.diff}`);
+    if (decoded.input === toBigInt(3) && decoded.diff === toBigInt(1)) {
+      console.log("SUCCESS")
+    } else {
+      console.log(`FAILURE: expected input=3 && diff=1`)
+    }
   }
-  console.log('SUCCESS')
 
 }
 
