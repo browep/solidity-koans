@@ -16,9 +16,20 @@ In the koan directory, execute `./run.sh`.  There may or may not be logs, but th
 
 ## Contributing ##
 
-TBD
+see `gen_koan.sh` script to create the boilerplate for a koan.
+
+eg
+`./gen_koan.sh 1_basics 1_5_array_slicing`
+
+* Update the generated `run.sh` and replace the "REPLACE_ME" text with name of the koan, eg `1_5_array_slicing`
+* Update the generated `README.md` with instructions for the user.
+* Create a PR into this repo
 
 ## License ## 
 
 MIT License
+
+## Inspiration ##
+
+see https://www.rubykoans.com/ for the original "koans" style learning.
 
