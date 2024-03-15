@@ -18,7 +18,7 @@ contract Contract {
 
     uint[] myVals = [1,4,9];
 
-    using {max} for uint[];
+//    ??? update this line with a "using for" declaration, so line 24 compiles and executes correctly
 
     function getMax() public view returns (uint) {
         return myVals.max();
