@@ -19,9 +19,9 @@ async function main() {
   );
   const contractInstance = contractClass.attach(contractDeploy.target)
 
-  let retVal = await contractInstance.contractMethodReplace_Me()
+  let retVal = await contractInstance.getMax()
   console.log(`ret val=${retVal}`)
-  let expected = 'REPLACE_ME';
+  let expected = 9;
   if (retVal != expected) {
     throw new Error(`FAILURE, was expecting ${expected}, got ${retVal}`)
   }
